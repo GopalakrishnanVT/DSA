@@ -8,17 +8,18 @@ public class Stacks {
         Stack<Integer> stack=new Stack<Integer>();
         stack.push(23);
         stack.push(24);
-        stack.push(25);
-        stack.push(26);
+        stack.push(2);
+        stack.push(13);
         Stack<Integer> stack1=new Stack<Integer>();
         Stack<Integer> stack2=new Stack<Integer>();
-        System.out.println(stack);
+       // System.out.println(stack);
        /* moveStack(stack,stack1);
         moveStack(stack1,stack2);
         moveStack(stack2,stack);*/
         //System.out.println(stack);
-        insertValueAtIndex(stack,0,30);
-        System.out.println(stack);
+        insertValueAtIndex(stack,3,30);
+      //  System.out.println(stack);
+        minValueInStack(stack);
 
     }
     private static void moveStack(Stack<Integer> source, Stack<Integer> des) {
@@ -44,6 +45,28 @@ public class Stacks {
            temp.pop();
 
        }
+
+    }
+
+    private static void minValueInStack(Stack<Integer> mainStack){
+        Stack<Integer> temp=new Stack<Integer>();
+        int i=mainStack.size();
+        while (!mainStack.empty()){
+            if(temp.empty()){
+                temp.push(mainStack.peek());
+                mainStack.pop();
+            } else if (!temp.empty()) {
+                if(temp.peek()>(mainStack.peek())){
+                    temp.push(mainStack.peek());
+                    mainStack.pop();
+                }
+                else{
+                    mainStack.pop();
+                }
+
+            }
+        }
+        System.out.println(temp.peek());
 
     }
 
